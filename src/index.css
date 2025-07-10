@@ -85,6 +85,17 @@
   body {
     @apply bg-background text-foreground font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
+    cursor: none;
+  }
+
+  /* Hide default cursor on interactive elements */
+  button,
+  a,
+  input,
+  textarea,
+  select,
+  [role="button"] {
+    cursor: none !important;
   }
 
   h1, h2, h3, h4, h5, h6 {

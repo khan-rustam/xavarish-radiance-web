@@ -4,8 +4,13 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import { CartProvider } from "@/contexts/CartContext";
 import { WishlistProvider } from "@/contexts/WishlistContext";
+import { CustomCursor } from "@/components/animations/CustomCursor";
+import { FloatingElements } from "@/components/animations/FloatingElements";
+import { PageTransition } from "@/components/animations/PageTransition";
+import { GlobalLoader } from "@/components/GlobalLoader";
 import Index from "./pages/Index";
 import Shop from "./pages/Shop";
 import Cart from "./pages/Cart";
@@ -26,23 +31,28 @@ const App = () => (
     <TooltipProvider>
       <CartProvider>
         <WishlistProvider>
+          <GlobalLoader />
           <Toaster />
           <Sonner />
+          <CustomCursor />
+          <FloatingElements />
           <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/shop" element={<Shop />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/wishlist" element={<Wishlist />} />
-              <Route path="/checkout" element={<Checkout />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/product/:id" element={<ProductDetail />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:slug" element={<BlogPost />} />
-              <Route path="/compare" element={<Compare />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <AnimatePresence mode="wait">
+              <Routes>
+                <Route path="/" element={<PageTransition><Index /></PageTransition>} />
+                <Route path="/shop" element={<PageTransition><Shop /></PageTransition>} />
+                <Route path="/cart" element={<PageTransition><Cart /></PageTransition>} />
+                <Route path="/wishlist" element={<PageTransition><Wishlist /></PageTransition>} />
+                <Route path="/checkout" element={<PageTransition><Checkout /></PageTransition>} />
+                <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+                <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+                <Route path="/product/:id" element={<PageTransition><ProductDetail /></PageTransition>} />
+                <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
+                <Route path="/blog/:slug" element={<PageTransition><BlogPost /></PageTransition>} />
+                <Route path="/compare" element={<PageTransition><Compare /></PageTransition>} />
+                <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+              </Routes>
+            </AnimatePresence>
           </BrowserRouter>
         </WishlistProvider>
       </CartProvider>
