@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { CartProvider } from "@/contexts/CartContext";
 import { WishlistProvider } from "@/contexts/WishlistContext";
-import { CustomCursor } from "@/components/animations/CustomCursor";
+
 import { FloatingElements } from "@/components/animations/FloatingElements";
 import { PageTransition } from "@/components/animations/PageTransition";
 import { GlobalLoader } from "@/components/GlobalLoader";
@@ -22,6 +22,9 @@ import ProductDetail from "./pages/ProductDetail";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Compare from "./pages/Compare";
+import Profile from "./pages/Profile";
+import Orders from "./pages/Orders";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,7 +37,7 @@ const App = () => (
           <GlobalLoader />
           <Toaster />
           <Sonner />
-          <CustomCursor />
+          
           <FloatingElements />
           <BrowserRouter>
             <AnimatePresence mode="wait">
@@ -50,6 +53,9 @@ const App = () => (
                 <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
                 <Route path="/blog/:slug" element={<PageTransition><BlogPost /></PageTransition>} />
                 <Route path="/compare" element={<PageTransition><Compare /></PageTransition>} />
+                <Route path="/profile" element={<PageTransition><Profile /></PageTransition>} />
+                <Route path="/orders" element={<PageTransition><Orders /></PageTransition>} />
+                <Route path="/settings" element={<PageTransition><Settings /></PageTransition>} />
                 <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
               </Routes>
             </AnimatePresence>

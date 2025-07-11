@@ -10,6 +10,8 @@ import Footer from '@/components/Footer';
 import { useCart } from '@/contexts/CartContext';
 import { useWishlist } from '@/contexts/WishlistContext';
 import { AnimatedSection } from '@/components/animations/AnimatedSection';
+import { AdvancedScrollAnimations } from '@/components/animations/AdvancedScrollAnimations';
+import { ParallaxSection } from '@/components/animations/ParallaxSection';
 import { motion } from 'framer-motion';
 
 const featuredProducts = [
@@ -119,41 +121,49 @@ const Index = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden brand-gradient">
+      <AdvancedScrollAnimations animation="fadeUp" className="relative h-screen flex items-center justify-center overflow-hidden brand-gradient">
+        <ParallaxSection speed={0.3} className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1920&h=1080&fit=crop')] bg-cover bg-center opacity-10">
+          <div></div>
+        </ParallaxSection>
         <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent z-10"></div>
-        <div className="relative z-20 text-center max-w-4xl mx-auto px-4 animate-fade-in">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-charcoal mb-6">
-            Redefine Radiance
-            <span className="block text-gradient">with Xavarish</span>
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Discover the art of luxury beauty with our curated collection of premium cosmetics designed for the modern, sophisticated woman.
-          </p>
-          <div className="space-x-4">
-            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white px-8 py-3">
-              <Link to="/shop">
-                Explore Collection <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="px-8 py-3">
-              <Link to="/about">Our Story</Link>
-            </Button>
-          </div>
+        <div className="relative z-20 text-center max-w-4xl mx-auto px-4">
+          <AdvancedScrollAnimations animation="fadeUp" delay={0.2}>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-charcoal mb-6">
+              Redefine Radiance
+              <span className="block text-gradient">with Xavarish</span>
+            </h1>
+          </AdvancedScrollAnimations>
+          <AdvancedScrollAnimations animation="fadeUp" delay={0.4}>
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Discover the art of luxury beauty with our curated collection of premium cosmetics designed for the modern, sophisticated woman.
+            </p>
+          </AdvancedScrollAnimations>
+          <AdvancedScrollAnimations animation="scaleIn" delay={0.6}>
+            <div className="space-x-4">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white px-8 py-3">
+                <Link to="/shop">
+                  Explore Collection <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="px-8 py-3">
+                <Link to="/about">Our Story</Link>
+              </Button>
+            </div>
+          </AdvancedScrollAnimations>
         </div>
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1920&h=1080&fit=crop')] bg-cover bg-center opacity-10"></div>
-      </section>
+      </AdvancedScrollAnimations>
 
       {/* Featured Products Carousel */}
-      <section className="py-16 lg:py-24">
+      <AdvancedScrollAnimations animation="fadeUp" className="py-16 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 animate-slide-up">
+          <AdvancedScrollAnimations animation="slideLeft" className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-serif font-bold text-charcoal mb-4">
               Featured Products
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Discover our most loved products, crafted with the finest ingredients for exceptional results.
             </p>
-          </div>
+          </AdvancedScrollAnimations>
 
           <div className="relative">
             <div className="overflow-hidden rounded-2xl">
@@ -258,27 +268,26 @@ const Index = () => {
             </div>
           </div>
         </div>
-      </section>
+      </AdvancedScrollAnimations>
 
       {/* Categories */}
-      <section className="py-16 lg:py-24 bg-soft-pink">
+      <AdvancedScrollAnimations animation="fadeUp" className="py-16 lg:py-24 bg-soft-pink">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 animate-slide-up">
+          <AdvancedScrollAnimations animation="slideRight" className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-serif font-bold text-charcoal mb-4">
               Shop by Category
             </h2>
             <p className="text-lg text-muted-foreground">
               Find the perfect products for every aspect of your beauty routine
             </p>
-          </div>
+          </AdvancedScrollAnimations>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <AdvancedScrollAnimations animation="scaleIn" stagger={0.1} className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {categories.map((category, index) => (
               <Link 
                 key={category.name} 
                 to="/shop" 
-                className="group animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="group"
               >
                 <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 group-hover:scale-105">
                   <CardContent className="p-0">
@@ -298,9 +307,9 @@ const Index = () => {
                 </Card>
               </Link>
             ))}
-          </div>
+          </AdvancedScrollAnimations>
         </div>
-      </section>
+      </AdvancedScrollAnimations>
 
       {/* Brand Story Teaser */}
       <section className="py-16 lg:py-24 relative overflow-hidden">

@@ -5,6 +5,7 @@ import { ShoppingBag, Heart, Search, Menu, X, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/contexts/CartContext';
 import { useWishlist } from '@/contexts/WishlistContext';
+import { UserDropdown } from '@/components/UserDropdown';
 import CartSidebar from '@/components/CartSidebar';
 
 const Header = () => {
@@ -64,9 +65,7 @@ const Header = () => {
                 <Search className="h-5 w-5" />
               </Button>
               
-              <Button variant="ghost" size="icon" className="text-charcoal hover:text-primary">
-                <User className="h-5 w-5" />
-              </Button>
+              <UserDropdown />
 
               <Link to="/wishlist">
                 <Button variant="ghost" size="icon" className="text-charcoal hover:text-primary relative">
