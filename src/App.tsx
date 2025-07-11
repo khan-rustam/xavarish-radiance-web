@@ -26,6 +26,8 @@ import Profile from "./pages/Profile";
 import Orders from "./pages/Orders";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 const queryClient = new QueryClient();
 
@@ -56,6 +58,8 @@ const App = () => (
                 <Route path="/profile" element={<PageTransition><Profile /></PageTransition>} />
                 <Route path="/orders" element={<PageTransition><Orders /></PageTransition>} />
                 <Route path="/settings" element={<PageTransition><Settings /></PageTransition>} />
+                <Route path="/login" element={<PageTransition><Login /></PageTransition>} />
+                <Route path="/register" element={<PageTransition><Register /></PageTransition>} />
                 <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
               </Routes>
             </AnimatePresence>
